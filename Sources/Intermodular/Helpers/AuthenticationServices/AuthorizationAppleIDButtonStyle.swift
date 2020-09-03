@@ -1,4 +1,4 @@
-//
+/*//
 // Copyright (c) Vatsal Manot
 //
 
@@ -59,3 +59,4 @@ extension WKInterfaceAuthorizationAppleIDButton.Style {
 #endif
 
 #endif
+*/

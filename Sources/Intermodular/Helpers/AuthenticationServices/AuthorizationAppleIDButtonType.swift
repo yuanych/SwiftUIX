@@ -1,4 +1,4 @@
-//
+/*//
 // Copyright (c) Vatsal Manot
 //
 
@@ -43,3 +43,4 @@ extension ASAuthorizationAppleIDButton.ButtonType {
 }
 
 #endif
+*/

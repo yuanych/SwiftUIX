@@ -1,4 +1,4 @@
-//
+/*//
 // Copyright (c) Vatsal Manot
 //
 
@@ -171,3 +171,4 @@ extension AuthorizationAppleIDButton {
 }
 
 #endif
+*/
