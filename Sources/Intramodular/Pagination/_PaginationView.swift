@@ -73,7 +73,7 @@ extension _PaginationView: UIViewControllerRepresentable {
             navigationOrientation: axis == .horizontal ? .horizontal : .vertical,
             options: interPageSpacing.map({ [.interPageSpacing: $0 as NSNumber] })
         )
-        
+        uiViewController.navigationController?.setNavigationBarHidden(true, animated: false)
         #if os(tvOS)
         uiViewController.view.backgroundColor = UIColor.clear
         #endif
@@ -130,6 +130,7 @@ extension _PaginationView: UIViewControllerRepresentable {
         
         uiViewController._isAnimated = context.transaction.isAnimated
         uiViewController.content = content
+        uiViewController.navigationController?.setNavigationBarHidden(true, animated: false)
         
         if let initialPageIndex = initialPageIndex, !uiViewController.isInitialPageIndexApplied {
             DispatchQueue.main.async {
