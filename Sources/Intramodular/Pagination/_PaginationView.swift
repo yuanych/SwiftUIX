@@ -100,6 +100,8 @@ extension _PaginationView: UIViewControllerRepresentable {
                     direction: .forward,
                     animated: context.transaction.isAnimated
                 )
+                firstViewController.navigationController?.setNavigationBarHidden(true, animated: false)
+                uiViewController.navigationController?.setNavigationBarHidden(true, animated: false)
             }
         } else {
             if !content.isEmpty {
@@ -111,6 +113,8 @@ extension _PaginationView: UIViewControllerRepresentable {
                         direction: .forward,
                         animated: context.transaction.isAnimated
                     )
+                    firstViewController.navigationController?.setNavigationBarHidden(true, animated: false)
+                    uiViewController.navigationController?.setNavigationBarHidden(true, animated: false)
                 }
                 
                 currentPageIndex = 0
@@ -118,7 +122,7 @@ extension _PaginationView: UIViewControllerRepresentable {
         }
         
         progressionController = _ProgressionController(base: uiViewController, currentPageIndex: $currentPageIndex)
-        
+        progressionController.navigationController?.setNavigationBarHidden(true, animated: false)
         return uiViewController
     }
     
@@ -135,17 +139,19 @@ extension _PaginationView: UIViewControllerRepresentable {
         if let initialPageIndex = initialPageIndex, !uiViewController.isInitialPageIndexApplied {
             DispatchQueue.main.async {
                 uiViewController.isInitialPageIndexApplied = true
-                
+                uiViewController.navigationController?.setNavigationBarHidden(true, animated: false)
                 currentPageIndex = initialPageIndex
             }
-            
             uiViewController.currentPageIndex = content.data.index(content.data.startIndex, offsetBy: initialPageIndex)
+            uiViewController.navigationController?.setNavigationBarHidden(true, animated: false)
         } else {
             uiViewController.currentPageIndex = content.data.index(content.data.startIndex, offsetBy: self.currentPageIndex)
+            uiViewController.navigationController?.setNavigationBarHidden(true, animated: false)
         }
         
         if uiViewController.pageControl?.currentPage != currentPageIndex {
             uiViewController.pageControl?.currentPage = currentPageIndex
+            uiViewController.navigationController?.setNavigationBarHidden(true, animated: false)
         }
         
         uiViewController.cyclesPages = cyclesPages
@@ -153,15 +159,18 @@ extension _PaginationView: UIViewControllerRepresentable {
         uiViewController.isPanGestureEnabled = context.environment.isPanGestureEnabled
         uiViewController.isScrollEnabled = context.environment.isScrollEnabled
         uiViewController.isTapGestureEnabled = context.environment.isTapGestureEnabled
+        uiViewController.navigationController?.setNavigationBarHidden(true, animated: false)
         
         if #available(iOS 14.0, tvOS 14.0, *) {
             if let backgroundStyle = context.environment.pageControlBackgroundStyle {
                 uiViewController.pageControl?.backgroundStyle = backgroundStyle
+                uiViewController.navigationController?.setNavigationBarHidden(true, animated: false)
             }
         }
         
         uiViewController.pageControl?.currentPageIndicatorTintColor = context.environment.currentPageIndicatorTintColor?.toUIColor()
         uiViewController.pageControl?.pageIndicatorTintColor = context.environment.pageIndicatorTintColor?.toUIColor()
+        uiViewController.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     @usableFromInline
