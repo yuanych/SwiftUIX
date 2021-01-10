@@ -122,7 +122,6 @@ extension _PaginationView: UIViewControllerRepresentable {
         }
         
         progressionController = _ProgressionController(base: uiViewController, currentPageIndex: $currentPageIndex)
-        progressionController.navigationController?.setNavigationBarHidden(true, animated: false)
         return uiViewController
     }
     
